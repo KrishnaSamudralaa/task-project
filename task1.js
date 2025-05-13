@@ -7,6 +7,14 @@ const detailMap = {
   option3: document.getElementById('option3-details'),
 };
 
+const totalPriceElement = document.getElementById('totalPrice');
+
+const prices = {
+  option1: "$10.00",
+  option2: "$18.00",
+  option3: "$25.00"
+};
+
 // Hide all initially
 Object.values(detailMap).forEach(detail => detail.style.display = 'none');
 
@@ -25,6 +33,11 @@ radios.forEach(radio => {
 
       // Add active style to selected card
       radio.closest('.radio-card').classList.add('active');
+
+      // Update total price
+      if (totalPriceElement && prices[radio.id]) {
+        totalPriceElement.textContent = `Total: ${prices[radio.id]}`;
+      }
     }
   });
 });
